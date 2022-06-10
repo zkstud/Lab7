@@ -21,19 +21,20 @@ public class Controller {
 //            lbY.setText("@" + mouseEvent.getY());
 //        }
 //    };
-    private EventHandler<MouseEvent> myClickHandler = (MouseEvent mouseEvent) ->{
-        lbX.setText("$" + mouseEvent.getX());
-        lbY.setText("$" + mouseEvent.getY());
-    };
+//    private EventHandler<MouseEvent> myClickHandler = (MouseEvent mouseEvent) ->{
+//        lbX.setText("$" + mouseEvent.getX());
+//        lbY.setText("$" + mouseEvent.getY());
+//    };
+    private EventHandler<MouseEvent> myClickHandler = (MouseEvent mouseEvent) -> handleMouseClick(mouseEvent);
 
     @FXML
     private void initialize() {
         pnArea.setOnMouseClicked(myClickHandler);
     }
 
-//    public void handleMouseClick(MouseEvent mouseEvent) {
-//        lbX.setText("!"+mouseEvent.getX());
-//        lbY.setText("!"+mouseEvent.getY());
-//    }
+    public void handleMouseClick(MouseEvent mouseEvent) {
+        lbX.setText("!" + mouseEvent.getX());
+        lbY.setText("!" + mouseEvent.getY());
+    }
 
 }

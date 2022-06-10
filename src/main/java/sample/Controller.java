@@ -13,7 +13,7 @@ public class Controller {
     public Label lbY;
     @FXML
     public Pane pnArea;
-    private EventHandler<MouseEvent> myClickHandler;
+    private EventHandler<MouseEvent> myClickHandler = new EvHandlerMouseClicked(this);
 
     @FXML
     private void initialize() {

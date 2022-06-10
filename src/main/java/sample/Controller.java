@@ -14,12 +14,16 @@ public class Controller {
     @FXML
     public Pane pnArea;
     //    private EventHandler<MouseEvent> myClickHandler = new EvHandlerMouseClicked(this);
-    private EventHandler<MouseEvent> myClickHandler = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent mouseEvent) {
-            lbX.setText("@" + mouseEvent.getX());
-            lbY.setText("@" + mouseEvent.getY());
-        }
+//    private EventHandler<MouseEvent> myClickHandler = new EventHandler<MouseEvent>() {
+//        @Override
+//        public void handle(MouseEvent mouseEvent) {
+//            lbX.setText("@" + mouseEvent.getX());
+//            lbY.setText("@" + mouseEvent.getY());
+//        }
+//    };
+    private EventHandler<MouseEvent> myClickHandler = (MouseEvent mouseEvent) ->{
+        lbX.setText("$" + mouseEvent.getX());
+        lbY.setText("$" + mouseEvent.getY());
     };
 
     @FXML

@@ -2,6 +2,8 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -47,8 +49,11 @@ public class Controller {
         rect.setRotate(45);
         rect.setWidth(50);
         rect.setHeight(50);
-    }
 
+        pnArea.setOnKeyPressed((KeyEvent ev) -> handleKeyPressed(ev));
+
+//        pnArea.setClip(new Rectangle(pnArea.getWidth(), pnArea.getHeight()));
+    }
 
     public void handleMouse(MouseEvent mouseEvent, boolean aClick) {
         System.out.println("dragged" + dragged);
@@ -57,11 +62,30 @@ public class Controller {
         lbY.setText(prefix + mouseEvent.getY());
     }
 
-    public void handleDrag(MouseEvent mouseEvent){
+    public void handleDrag(MouseEvent mouseEvent) {
         lbX.setText("@" + mouseEvent.getX());
         lbY.setText("@" + mouseEvent.getY());
         rect.setX(mouseEvent.getX());
         rect.setY(mouseEvent.getY());
     }
 
+    public void handleKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.UP) {
+            rect.setY(rect.getY() - 5);
+            rect.setRotate(rect.getRotate() - 5);
+        } else if (keyEvent.getCode() == KeyCode.DOWN) {
+            rect.setY(rect.getY() + 5);
+            rect.setRotate(rect.getRotate() + 5);
+        } else if (keyEvent.getCode() == KeyCode.LEFT) {
+            rect.setX(rect.getX() - 5);
+            rect.setRotate(rect.getRotate() - 5);
+        } else if (keyEvent.getCode() == KeyCode.RIGHT) {
+            rect.setX(rect.getX() + 5);
+            rect.setRotate(rect.getRotate() + 5);
+        }
+    }
+
+    public void stageResized() {
+        pnArea.setClip(new Rectangle(pnArea.getWidth(), pnArea.getHeight()));
+    }
 }

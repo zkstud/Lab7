@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -30,13 +29,16 @@ public class Controller {
     @FXML
     private void initialize() {
 //        pnArea.setOnMouseClicked(myClickHandler);
-        pnArea.setOnMouseClicked((MouseEvent mouseEvent) -> handleMouseClick(mouseEvent));
+//        pnArea.setOnMouseClicked((MouseEvent mouseEvent) -> handleMouseClick(mouseEvent));
+        pnArea.setOnMouseClicked((MouseEvent mouseEvent) -> handleMouse(mouseEvent, true));
+        pnArea.setOnMouseMoved((MouseEvent mouseEvent) -> handleMouse(mouseEvent, false));
     }
 
 
-    public void handleMouseClick(MouseEvent mouseEvent) {
-        lbX.setText("!" + mouseEvent.getX());
-        lbY.setText("!" + mouseEvent.getY());
+    public void handleMouse(MouseEvent mouseEvent, boolean aClick) {
+        String prefix = aClick ? "!" : "";
+        lbX.setText(prefix + mouseEvent.getX());
+        lbY.setText(prefix + mouseEvent.getY());
     }
 
 }

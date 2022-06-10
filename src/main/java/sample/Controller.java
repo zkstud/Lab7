@@ -12,6 +12,7 @@ public class Controller {
     public Label lbY;
     @FXML
     public Pane pnArea;
+    private boolean dragged = false;
     //    private EventHandler<MouseEvent> myClickHandler = new EvHandlerMouseClicked(this);
 //    private EventHandler<MouseEvent> myClickHandler = new EventHandler<MouseEvent>() {
 //        @Override
@@ -32,11 +33,15 @@ public class Controller {
 //        pnArea.setOnMouseClicked((MouseEvent mouseEvent) -> handleMouseClick(mouseEvent));
         pnArea.setOnMouseClicked((MouseEvent mouseEvent) -> handleMouse(mouseEvent, true));
         pnArea.setOnMouseMoved((MouseEvent mouseEvent) -> handleMouse(mouseEvent, false));
+        pnArea.setOnDragDetected((MouseEvent mouseEvent) -> dragged = true);
+        pnArea.setOnMouseDragged((MouseEvent mouseEvent) -> handleMouse(mouseEvent, false));
+        pnArea.setOnMouseReleased((MouseEvent mouseEvent) -> dragged = false);
     }
 
 
     public void handleMouse(MouseEvent mouseEvent, boolean aClick) {
-        String prefix = aClick ? "!" : "";
+        System.out.println("dragged" + dragged);
+        String prefix = dragged ? (aClick ? "" : "@") : (aClick ? "!" : "*");
         lbX.setText(prefix + mouseEvent.getX());
         lbY.setText(prefix + mouseEvent.getY());
     }

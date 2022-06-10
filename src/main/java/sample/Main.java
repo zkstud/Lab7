@@ -11,10 +11,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("sample.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setTitle("Zdarzenia");
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     public static void main(String[] args) {
